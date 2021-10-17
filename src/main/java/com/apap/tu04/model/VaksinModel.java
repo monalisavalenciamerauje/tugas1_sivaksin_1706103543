@@ -1,4 +1,4 @@
-package com.apap.tu04.model;
+package tugas1.sivaksin.model;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -21,8 +21,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "flight")
-public class FlightModel implements Serializable {
+@Table(name = "vaksin")
+public class VaksintModel implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +30,10 @@ public class FlightModel implements Serializable {
 	
 	@NotNull
 	@Size(max = 50)
-	@Column(name = "flight_number", nullable = false)
-	private String flightNumber;
+	@Column(name = "vaksin_number", nullable = false)
+	private String vaksinNumber;
 	
+
 	@NotNull
 	@Size(max = 50)
 	@Column(name = "origin", nullable = false)
@@ -48,10 +49,10 @@ public class FlightModel implements Serializable {
 	private Date time;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pilot_licenseNumber", referencedColumnName = "license_number", nullable = false)
+	@JoinColumn(name = "fakes_licenseNumber", referencedColumnName = "license_number", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnore
-	private PilotModel pilot;
+	private FakesModel fakes;
 
 	public long getId() {
 		return id;
@@ -61,12 +62,12 @@ public class FlightModel implements Serializable {
 		this.id = id;
 	}
 
-	public String getFlightNumber() {
-		return flightNumber;
+	public String getVaksintNumber() {
+		return vaksinNumber;
 	}
 
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
+	public void setVaksinNumber(String vaksinNumber) {
+		this.vaksinNumber = vaksinNumber;
 	}
 
 	public String getOrigin() {
@@ -93,12 +94,12 @@ public class FlightModel implements Serializable {
 		this.time = time;
 	}
 
-	public PilotModel getPilot() {
-		return pilot;
+	public FakesModel getFakes() {
+		return fakes;
 	}
 
-	public void setPilot(PilotModel pilot) {
-		this.pilot = pilot;
+	public void setFakes(FakesModel fakes) {
+		this.fakes = fakes;
 		
 	}
 	

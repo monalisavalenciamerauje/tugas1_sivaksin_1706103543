@@ -1,4 +1,4 @@
-package com.apap.tu04.model;
+package tugas1.sivaksin.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "pilot")
-public class PilotModel implements Serializable {
+@Table(name = "fakes")
+public class FakesModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -36,8 +36,8 @@ public class PilotModel implements Serializable {
 	@Column(name = "fly_hour", nullable = false)
 	private int fly_hour;
 	
-	@OneToMany(mappedBy = "pilot", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private List<FlightModel> pilotFlight;
+	@OneToMany(mappedBy = "fakes", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private List<VaksinModel> fakesVaksin;
 
 	public long getId() {
 		return id;
@@ -71,12 +71,12 @@ public class PilotModel implements Serializable {
 		this.fly_hour = fly_hour;
 	}
 
-	public List<FlightModel> getPilotFlight() {
-		return pilotFlight;
+	public List<VaksintModel> getFakesVaksin() {
+		return fakesVaksin;
 	}
 
-	public void setPilotFlight(List<FlightModel> pilotFlight) {
-		this.pilotFlight = pilotFlight;
+	public void setFakesVaksin(List<VaksinModel> fakesVaksin) {
+		this.fakesVaksin = fakesVaksin;
 	}
 
 	
